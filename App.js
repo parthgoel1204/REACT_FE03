@@ -1,3 +1,6 @@
+import React from "react";
+import { createRoot } from "react-dom/client";
+
 const heading = React.createElement("h1", {id : "heading"}, "Hello World from React!");
 //  the second argument in the createELement function is an object which will be used to give the attributes to the tags.
 
@@ -21,6 +24,6 @@ const parent =  React.createElement("div",
 );
 
 // for making the above structure clean we have #"JSX"#
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = createRoot(document.getElementById("root"));
 // root.render(heading);
 root.render(parent);

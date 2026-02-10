@@ -1,0 +1,29 @@
+{
+  "name": "react_fe03",
+  "version": "1.0.0",
+  "description": "It is my practice during cohort.",
+  "homepage": "https://github.com/parthgoel1204/REACT_FE03#readme",
+  "bugs": {
+    "url": "https://github.com/parthgoel1204/REACT_FE03/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parthgoel1204/REACT_FE03.git"
+  },
+  "license": "ISC",
+  "author": "Parth Goel",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}

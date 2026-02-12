@@ -23,7 +23,7 @@ import { createRoot } from "react-dom/client";
 //     ]
 // );
 
-// // for making the above structure clean we have #"JSX"#
+//  for making the above structure clean we have #"JSX"#
 const root = createRoot(document.getElementById("root"));
 // // root.render(heading);
 // root.render(parent);
@@ -32,18 +32,27 @@ const jsxHeading = <h1 id="heading">This is JSX </h1>; //this is not a valid Jav
 // console.log(jsxHeading);
 
 // root.render(jsxHeading)
-
+const x = <span> ABC XYZ</span>;
+const element = (
+    <h1>
+        This is an react element
+        {x}
+    </h1>
+);
 // REACT FUNCTIONAL COMPONENT
 const Title = () => (
     <h1> This is a title component which is inside a heading component. </h1>
 )
 const HeadingComponent = () => (
-
     <div>
     <Title/>
+    {element}
     <h1>This is a React Component!</h1>
     </div>
 )
-
+// Both the below are same 
+{/* <Title/> */}
+{/* <Title></Title> */}
+// Also we can use curly and then make a function call {Title()} this is also the way for injecting a component 
 const HeadingComponent2 = () => <h1>This is a React Component!</h1>
 root.render(<HeadingComponent/>)

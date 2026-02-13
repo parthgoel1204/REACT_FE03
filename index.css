@@ -1,3 +1,31 @@
-#heading{
+/* #heading{
     color: red;
+} */
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+.logo{
+    width: 6vw;
+    max-height: 10vh;
+}
+.nav-items ul{
+    font-size: large;
+    display: flex;
+    list-style-type: none;
+}
+.nav-items ul li{
+    padding: 1vw;
+}
+
+.res-card{
+    width: 18vw;
+    height: 40vh;
+    border: 1px solid black;
+}
+
+.search{
+    padding: 1vh;
 }

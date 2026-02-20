@@ -10,7 +10,6 @@ const styleCard = {
 
 // const RestaurantCard = (props:RestaurantProps) => {
 
-
 const AppLayout = ()=> {
     return (
         <div className="app">

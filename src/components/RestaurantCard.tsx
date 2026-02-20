@@ -4,13 +4,16 @@ import {CDN_URL} from "../utils/constants";
 //     resName: string,
 //     cuisine: string
 // }
+interface SLA {
+  deliveryTime: number;
+}
 interface RestaurantData {
   cloudinaryImageId: string;
   name: string;
   avgRating: number;
   cuisines: string[];
   costForTwo: string;
-  deliveryTime: number;
+  sla: SLA;
 }
 
 interface RestaurantCardProps {
@@ -28,7 +31,7 @@ const RestaurantCard = (props : RestaurantCardProps) => {
     avgRating,
     cuisines,
     costForTwo,
-    deliveryTime,
+    sla,
   } = resData?.info || {};
 
     return (
@@ -41,7 +44,7 @@ const RestaurantCard = (props : RestaurantCardProps) => {
             <p>{cuisines?.join(", ")}</p>
             <p>{avgRating} stars</p>
             <p> {costForTwo}</p>
-            <p>{deliveryTime} mins</p>
+            <p>{sla?.deliveryTime} mins</p>
         </div>
     );
 }

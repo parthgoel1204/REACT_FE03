@@ -60,3 +60,18 @@
     height: 50vh;
     background-color: #f0f0f0;
 }
+.login-btn{
+    border: none;
+    margin: 0 1.2vw;
+}
+.login-btn:hover{
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.filter{
+    display: flex;
+}
+.search{
+    margin-top: 2.3vh;
+}

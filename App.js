@@ -25,7 +25,7 @@ import { createRoot } from "react-dom/client";
 
 //  for making the above structure clean we have #"JSX"#
 const root = createRoot(document.getElementById("root"));
-// // root.render(heading);
+//  root.render(heading);
 // root.render(parent);
 const jsxHeading = <h1 id="heading">This is JSX </h1>; //this is not a valid Javascript
 // The above JSX code is converted to React.createELement() and then to JS object before rendering onto the DOM as HTML element.

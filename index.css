@@ -75,3 +75,7 @@
 .search{
     margin-top: 2.3vh;
 }
+.user-card{
+    padding: 10px;
+    border: 1px solid black;
+}

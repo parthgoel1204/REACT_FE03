@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import {useState , useEffect} from "react";
 // import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
+import {Link} from "react-router-dom";
 
 interface RestaurantInfo {
   id: string;
@@ -86,7 +87,7 @@ const Body = ()=> {
 
     const fetchData = async () => {
         const data = await fetch(
-            "https://corsproxy.io/?url=https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Flat%3D28.719028%26lng%3D77.077506%26is-seo-homepage-enabled%3Dtrue%26page_type%3DDESKTOP_WEB_LISTING"
+            "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
         );
 
         const json = await data.json();
@@ -137,7 +138,9 @@ const Body = ()=> {
             </div>
             <div className="res-container">
                 {filteredRestaurants.map((res) => (
-                    <RestaurantCard key={res.info.id} resData={res} />
+                    <Link  key={res.info.id} to={"/restaurants/" + res.info.id}>
+                        <RestaurantCard resData={res}/>
+                    </Link>
                 ))}
                 {/* <RestaurantCard resName="Meghana Foods" cuisine="Continental , Veg & Non-Veg" />
                 <RestaurantCard resName="Balwinder DI Hatti" cuisine="Desi , Punjabi , Indian"/> */}

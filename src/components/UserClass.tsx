@@ -9,13 +9,21 @@ interface UserClassState {
 class UserClass extends React.Component<UserClassProps,UserClassState>{
     constructor (props : UserClassProps){
         super(props);
-        console.log(props);
+        // console.log(props); X
         this.state= {
             count:0,
             count2:2,
         }
+        console.log(this.props.name + "Child Constructor");
+        
+    }
+    componentDidMount(): void {
+        console.log(this.props.name +"Child Component Mount");
+        
     }
     render(){
+        console.log(this.props.name +"Child Render");
+        
         // const {count,count2} = this.state;
         return (
         <div className="user-card">

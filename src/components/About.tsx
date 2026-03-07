@@ -5,7 +5,7 @@ const About = () => {
         <>
             <h1> ABOUT </h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, fuga! Impedit ex neque aperiam? Temporibus commodi nemo perferendis corporis tempora.</p>
-            <User name = {"Parth G"}/>
+            {/* <User name = {"Parth G"}/> */}
             <UserClass name = {"Parth Goel"}/>
         </>
     );

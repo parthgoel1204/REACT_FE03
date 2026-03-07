@@ -24,7 +24,7 @@ class About extends Component<UserClassProps> {
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, fuga! Impedit ex neque aperiam? Temporibus commodi nemo perferendis corporis tempora.</p>
             {/* <User name = {"Parth G"}/> */}
             <UserClass name = {"Parth Goel"}/>
-            <UserClass name = {"Elon Goel"}/>
+            {/* <UserClass name = {"Elon Goel"}/> */}
         </>
         );
     }

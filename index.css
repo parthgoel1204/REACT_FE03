@@ -1,7 +1,7 @@
 /* #heading{
     color: red;
 } */
-
+@import "tailwindcss";
 .header{
     display: flex;
     justify-content: space-between;

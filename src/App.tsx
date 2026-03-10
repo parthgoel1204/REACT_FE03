@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ lazy , Suspense} from "react";
 import {createRoot} from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,7 +8,10 @@ import ErrorPage from "./components/ErrorPage";
 import RestaurantMenu from "./components/RestaurantMenu";
 // import logo from "./logo.png";
 import { createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
+import Shimmer from "./components/Shimmer";
+// import Grocery from "./components/Grocery";
 
+const Grocery = lazy( () => import("./components/Grocery"));
 const styleCard = {
     backgroundColor : "#f0f0f0",
 };
@@ -53,6 +56,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/restaurants/:resId",
                 element: <RestaurantMenu/>
+            },
+             {
+                path: "/grocery",
+                element: <Suspense fallback={<h1>Loading..</h1>}><Grocery/></Suspense>
             }
         ]
     },

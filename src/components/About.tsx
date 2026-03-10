@@ -5,7 +5,7 @@ import UserClass from "./UserClass";
 interface UserClassProps{
     name : string;
 }
-class About extends Component<UserClassProps> {
+class About extends Component<{}, {}> {
     constructor(props:UserClassProps){
         super(props);
         console.log("Parent Constructor");

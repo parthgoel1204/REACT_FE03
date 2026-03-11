@@ -35,18 +35,29 @@ const RestaurantCard = (props : RestaurantCardProps) => {
   } = resData?.info || {};
 
     return (
-        <div className="res-card"  >
+        <div className="m-4 p-4 w-90 hover:bg-gray-400"  >
             {/* <img className="res-logo" alt="res-logo" src="https://www.cookingcarnival.com/wp-content/uploads/2025/09/Vegetable-Dum-Biryani-5.jpg"/> */}
-            <img className="res-logo" alt="res-logo" src={CDN_URL + cloudinaryImageId}/>
+            <img className="rounded-lg" alt="res-logo" src={CDN_URL + cloudinaryImageId}/>
             {/* <h3>{props.resName}</h3>
             <p>{props.cuisine}</p> */}
-            <h3>{name}</h3>
+            <h3 className="font-extrabold py-4 text-2xl">{name}</h3>
             <p>{cuisines?.join(", ")}</p>
             <p>{avgRating} stars</p>
             <p> {costForTwo}</p>
             <p>{sla?.deliveryTime} mins</p>
         </div>
     );
+};
+
+export const withPromotedLabel = (RestaurantCard: React.ComponentType<RestaurantCardProps>) => {
+  return (props: RestaurantCardProps) => {
+    return(
+      <div>
+        <label className="absolute bg-black text-white m-2 p-2 rounded-lg"> PROMOTED </label>
+        <RestaurantCard {...props}/>
+      </div>
+    )
+  }
 }
 
 export default RestaurantCard;

@@ -1,9 +1,10 @@
 import RestaurantCard,{withPromotedLabel} from "./RestaurantCard";
-import {useState , useEffect} from "react";
+import {useState , useEffect, useContext} from "react";
 // import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 interface RestaurantInfo {
   id: string;
@@ -90,6 +91,8 @@ const Body = ()=> {
         fetchData();
     },[]);
 
+    const{setUserInfo, loggedInUser} = useContext(UserContext);
+
     const fetchData = async () => {
         const data = await fetch(
             "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
@@ -143,10 +146,15 @@ const Body = ()=> {
                             (res) => res.info.avgRating > 4
                         );
                         setListOfRestaurants(filteredLists)
-                    }}
-                >
+                    }}>
                     TOP RATED RESTAURENTS
-                </button>
+                    </button>
+                </div>
+                <div className="search m-4 p-4 items-center">
+                    <label>Username: </label>
+                    <input className="border border-black p-2"
+                    value={loggedInUser}
+                    onChange={(e)=> setUserInfo(e.target.value)}></input>
                 </div>
             </div>
             <div className="res-container flex flex-wrap">

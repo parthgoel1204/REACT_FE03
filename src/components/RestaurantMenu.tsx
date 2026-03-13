@@ -18,7 +18,7 @@ interface CategoryCard {
 const RestaurantMenu: React.FC = () => {
   const {resId} = useParams<{resId : string}>();
   const { resInfo, menuItems, categories } = useRestaurantMenu(resId!);
-  const [showIndex,setShowIndex] = useState(0);
+  const [showIndex,setShowIndex] = useState<number|null>(null);
   
   if(resInfo === null) return <Shimmer/>;
   const { name, cuisines, cloudinaryImageId, costForTwoMessage } = resInfo;
@@ -53,8 +53,10 @@ const RestaurantMenu: React.FC = () => {
         <RestaurantCategory 
           key={category?.card?.card?.title}
           data={category?.card?.card}
-          showItems = {index === showIndex ? true : false}
-          setShowIndex={() => setShowIndex(index)} 
+          showItems={index === showIndex}
+          setShowIndex={() =>
+            setShowIndex(showIndex === index ? null : index)
+          }
           />
         ))}
     </div>

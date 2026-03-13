@@ -1,12 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faCartShopping} from "@fortawesome/free-solid-svg-icons";
 import {LOGO_URL} from "../utils/constants";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
+
 const Header = () => {
     const [btnNameReact,setbtnNameReact] = useState("Login");
     const onlineStatus = useOnlineStatus();
+    const data = useContext(UserContext);
+    console.log(data);
+    
     return (
         <div className="flex justify-between bg-pink-100 shadow-xl">
             <div className="logo-container">
@@ -35,6 +40,7 @@ const Header = () => {
                         // console.log(btnNameReact);
                         
                     }}> {btnNameReact}</button>
+                    <li className="px-4">{data.loggedInUser}</li>
                 </ul>
             </div>
         </div>

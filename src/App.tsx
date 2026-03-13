@@ -1,4 +1,4 @@
-import React,{ lazy , Suspense} from "react";
+import React,{ lazy , Suspense, useState , useEffect} from "react";
 import {createRoot} from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -10,6 +10,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
 import Shimmer from "./components/Shimmer";
 // import Grocery from "./components/Grocery";
+import UserContext from "./utils/UserContext";
 
 const Grocery = lazy( () => import("./components/Grocery"));
 const styleCard = {
@@ -19,10 +20,21 @@ const styleCard = {
 // const RestaurantCard = (props:RestaurantProps) => {
 
 const AppLayout = ()=> {
+    const [userInfo,setUserInfo] = useState("");
+
+    useEffect(()=>{
+        const data = {
+            name : "Parth Goel"
+        };
+        setUserInfo(data.name);
+    },[]);
     return (
+        <UserContext.Provider value={{loggedInUser:userInfo,setUserInfo}}>
         <div className="app">
             {/* Hello from AppLayout; */}
-            <Header/>
+            {/* <UserContext.Provider value={{loggedInUser:"Elon", setUserInfo}}> */}
+                <Header/>
+            {/* </UserContext.Provider> */}
             {/* if path = /
             <Body/>
             { if path = /about }
@@ -31,6 +43,7 @@ const AppLayout = ()=> {
             <Contact/> */}
             <Outlet/>
         </div>
+        </UserContext.Provider>
     );
 }
 

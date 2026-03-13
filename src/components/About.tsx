@@ -1,6 +1,7 @@
 import { Component } from "react";
 import User from "./User";
 import UserClass from "./UserClass";
+import UserContext from "../utils/UserContext";
 
 interface UserClassProps{
     name : string;
@@ -21,6 +22,15 @@ class About extends Component<{}, {}> {
         return (
         <>
             <h1> ABOUT </h1>
+            <div>
+                LoggedInUser:
+                <UserContext.Consumer>
+                    {(data) => {
+                    console.log(data);
+                    return <span className="font-bold"> {data.loggedInUser}</span>;
+                    }}
+                </UserContext.Consumer>
+            </div>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, fuga! Impedit ex neque aperiam? Temporibus commodi nemo perferendis corporis tempora.</p>
             {/* <User name = {"Parth G"}/> */}
             <UserClass name = {"Parth Goel"}/>

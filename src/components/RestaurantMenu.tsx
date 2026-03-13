@@ -3,19 +3,8 @@ import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import { CDN_URL } from "../utils/constants";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
-
-interface MenuItemInfo {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-}
-
-interface MenuItemCard {
-  card: {
-    info: MenuItemInfo;
-  };
-}
+import RestaurantCategory from "./RestaurantCategory";
+import { MenuItemCard } from "../types/menu";
 
 interface CategoryCard {
   card?: {
@@ -27,29 +16,58 @@ interface CategoryCard {
 }
 const RestaurantMenu: React.FC = () => {
   const {resId} = useParams<{resId : string}>();
-  const { resInfo, menuItems } = useRestaurantMenu(resId!);
+  const { resInfo, menuItems, categories } = useRestaurantMenu(resId!);
   
   if(resInfo === null) return <Shimmer/>;
   const { name, cuisines, cloudinaryImageId, costForTwoMessage } = resInfo;
   // const resName = resInfo?.cards?.[2]?.card?.info?.name;
   // const menuItems = json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[5]?.card?.card?.itemCards
-  return  (
-    <div className="menu">
-      <h1>{name}</h1>
-      <img alt="res-logo" src={CDN_URL + cloudinaryImageId}/>
-      <p>{cuisines?.join(", ")}</p>
-      <p> {costForTwoMessage}</p>
-      <h2>Menu</h2>
-      <ul>
-        {menuItems.map((item,index)=>(
-          <li key={`${item.card.info.id} - ${index}`}>
-            <h3>{item.card.info.name} - Rs.{(item.card.info.price)/100}</h3>
-            {item.card.info.description}
-          </li>
+  return (
+  <div className="text-center max-w-6xl mx-auto p-6 bg-gray-100 ">
+
+    <h1 className="font-extrabold my-6 text-4xl text-gray-800">
+      {name}
+    </h1>
+
+    <img
+      className="mx-auto w-48 h-48 object-cover rounded-xl shadow-md mb-4"
+      alt="res-logo"
+      src={CDN_URL + cloudinaryImageId}
+    />
+
+    <p className="font-semibold text-lg text-gray-700">
+      {cuisines?.join(", ")}
+    </p>
+
+    <p className="text-gray-600 mt-1">
+      {costForTwoMessage}
+    </p>
+
+    <h2 className="mt-6 text-2xl font-bold text-gray-800 border-b pb-2">
+      Menu
+    </h2>
+    <div>
+      {categories.map((category)=> (
+        <RestaurantCategory key={category?.card?.card?.title} data={category?.card?.card}/> 
         ))}
-      </ul>
     </div>
-  );
+    {/* <ul className="mt-4 space-y-3 text-left">
+      {menuItems.map((item,index)=>(
+        <li 
+          key={`${item.card.info.id}-${index}`} 
+          className="p-3 bg-white rounded-lg shadow-sm hover:bg-gray-50"
+        >
+          <h3 className="font-semibold">
+            {item.card.info.name} - ₹{item.card.info.price / 100}
+          </h3>
+          <p className="text-sm text-gray-600">
+            {item.card.info.description}
+          </p>
+        </li>
+      ))}
+    </ul> */}
+  </div>
+);
 };
 
 export default RestaurantMenu;

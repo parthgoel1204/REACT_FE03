@@ -1,5 +1,5 @@
 import { useEffect,useState } from "react";
-
+import { MenuItemCard } from "../types/menu";
 interface RestaurantInfo {
   name: string;
   costForTwoMessage: string;
@@ -7,22 +7,10 @@ interface RestaurantInfo {
   cloudinaryImageId: string;
 }
 
-interface MenuItemInfo {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-}
-
-interface MenuItemCard {
-  card: {
-    info: MenuItemInfo;
-  };
-}
-
 interface CategoryCard {
   card?: {
     card?: {
+      ["@type"]?: string;
       title?: string;
       itemCards?: MenuItemCard[];
     };
@@ -32,6 +20,7 @@ interface CategoryCard {
 const useRestaurantMenu = (resId: string) => {
     const [resInfo,setResInfo] = useState<RestaurantInfo | null>(null);
     const [menuItems,setMenuItems] = useState<MenuItemCard[]>([]);
+    const [categories, setCategories] = useState<CategoryCard[]>([]);
 
     useEffect(() => {
         fetchData();
@@ -42,7 +31,7 @@ const useRestaurantMenu = (resId: string) => {
       "https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&submitAction=ENTER&restaurantId=" + resId
     )
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
 
     setResInfo(json?.data?.cards[2]?.card?.card?.info);
  
@@ -51,10 +40,16 @@ const useRestaurantMenu = (resId: string) => {
     const items = regularCards
       ?.filter((c: CategoryCard) => c?.card?.card?.itemCards)
       .flatMap((c: CategoryCard) => c?.card?.card?.itemCards ?? []);
-    setMenuItems(items);
-  };
 
-    return { resInfo, menuItems };
+    setMenuItems(items);
+
+    const filteredCategories = regularCards
+      ?.filter((c:CategoryCard) => c?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+    setCategories(filteredCategories); 
+    // console.log(filteredCategories);
+      
+  };
+    return { resInfo, menuItems, categories};
 }
 
 export default useRestaurantMenu;

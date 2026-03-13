@@ -5,6 +5,7 @@ import { CDN_URL } from "../utils/constants";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
 import { MenuItemCard } from "../types/menu";
+import { useState } from "react";
 
 interface CategoryCard {
   card?: {
@@ -17,6 +18,7 @@ interface CategoryCard {
 const RestaurantMenu: React.FC = () => {
   const {resId} = useParams<{resId : string}>();
   const { resInfo, menuItems, categories } = useRestaurantMenu(resId!);
+  const [showIndex,setShowIndex] = useState(0);
   
   if(resInfo === null) return <Shimmer/>;
   const { name, cuisines, cloudinaryImageId, costForTwoMessage } = resInfo;
@@ -47,8 +49,13 @@ const RestaurantMenu: React.FC = () => {
       Menu
     </h2>
     <div>
-      {categories.map((category)=> (
-        <RestaurantCategory key={category?.card?.card?.title} data={category?.card?.card}/> 
+      {categories.map((category,index)=> (
+        <RestaurantCategory 
+          key={category?.card?.card?.title}
+          data={category?.card?.card}
+          showItems = {index === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(index)} 
+          />
         ))}
     </div>
     {/* <ul className="mt-4 space-y-3 text-left">

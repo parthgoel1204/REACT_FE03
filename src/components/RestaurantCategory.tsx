@@ -1,16 +1,19 @@
 import ItemList from "./ItemList";
 import { CategoryCardData } from "../types/menu";
-import { useState } from "react";
+// import { useState } from "react";
 
 interface RestaurantCategoryProps {
   data?: CategoryCardData;
+  showItems : boolean;
+  setShowIndex: () => void;
 }
-const RestaurantCategory  = ({data} : RestaurantCategoryProps) => {
-  const [showItems,setShowItems] = useState(false);
+const RestaurantCategory  = ({data,showItems, setShowIndex} : RestaurantCategoryProps) => {
+  // const [showItems,setShowItems] = useState(false);
 
   const handleClick = () => {
     // console.log("clicked");
-    setShowItems(!showItems);
+    // setShowItems(!showItems);
+    setShowIndex();
   };
     return (
         <>

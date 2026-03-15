@@ -11,6 +11,9 @@ import { createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
 import Shimmer from "./components/Shimmer";
 // import Grocery from "./components/Grocery";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const Grocery = lazy( () => import("./components/Grocery"));
 const styleCard = {
@@ -29,6 +32,7 @@ const AppLayout = ()=> {
         setUserInfo(data.name);
     },[]);
     return (
+        <Provider store={appStore}>
         <UserContext.Provider value={{loggedInUser:userInfo,setUserInfo}}>
         <div className="app">
             {/* Hello from AppLayout; */}
@@ -44,6 +48,7 @@ const AppLayout = ()=> {
             <Outlet/>
         </div>
         </UserContext.Provider>
+        </Provider>
     );
 }
 
@@ -70,9 +75,13 @@ const appRouter = createBrowserRouter([
                 path: "/restaurants/:resId",
                 element: <RestaurantMenu/>
             },
-             {
+            {
                 path: "/grocery",
                 element: <Suspense fallback={<Shimmer/>}><Grocery/></Suspense>
+            },
+            {
+                path: "/cart",
+                element: <Cart/>
             }
         ]
     },

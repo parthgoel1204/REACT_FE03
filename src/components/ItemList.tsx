@@ -1,11 +1,19 @@
 import { CDN_URL } from "../utils/constants";
 import { MenuItemCard } from "../types/menu";
+import { useDispatch, UseDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 interface ItemListProps {
   items?: MenuItemCard[];
 }
 
 const ItemList = ({ items }: ItemListProps) => {
+
+  const dispatch = useDispatch();
+  const handleAddItem = (item:MenuItemCard) => {
+    // Dispatch an action
+    dispatch(addItem(item))
+  }
   return (
     <div>
       {items?.map((item) => (
@@ -40,6 +48,7 @@ const ItemList = ({ items }: ItemListProps) => {
                 className="absolute bottom-0 left-1/2 -translate-x-1/2 
                 bg-white text-green-600 font-bold px-4 py-1 rounded-lg 
                 shadow-lg border border-gray-300 hover:bg-gray-100 cursor-pointer"
+                onClick={() => handleAddItem(item)}
               >
                 Add +
               </button>

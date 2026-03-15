@@ -20,7 +20,7 @@ const RestaurantMenu: React.FC = () => {
   const { resInfo, menuItems, categories } = useRestaurantMenu(resId!);
   const [showIndex,setShowIndex] = useState<number|null>(null);
   
-  if(resInfo === null) return <Shimmer/>;
+  if(!resInfo) return <Shimmer/>;
   const { name, cuisines, cloudinaryImageId, costForTwoMessage } = resInfo;
   // const resName = resInfo?.cards?.[2]?.card?.info?.name;
   // const menuItems = json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[5]?.card?.card?.itemCards

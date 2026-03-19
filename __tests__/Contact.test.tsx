@@ -2,7 +2,9 @@ import { render,screen } from "@testing-library/react";
 import Contact from "../src/components/Contact";
 import "@testing-library/jest-dom";
 
-test("Should load contact us component",() => {
+// instead of test we can write as it also   
+describe("Contact us component test case", ()=> {
+    test("Should load contact us component",() => {
     render(<Contact />);
 
     const heading = screen.getByRole("heading");
@@ -37,3 +39,5 @@ test("Should load 2 input boxes on contact us component",() => {
     expect(inputBoxes.length).toBe(2);
     // expect(inputBoxes.length).not.toBe(2);
 })
+})
+

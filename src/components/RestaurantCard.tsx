@@ -33,6 +33,7 @@ const RestaurantCard = (props : RestaurantCardProps) => {
     costForTwo,
     sla,
   } = resData?.info || {};
+  console.log(resData);
 
     return (
         <div className="m-4 p-4 w-90 hover:bg-gray-400"  >

@@ -1,0 +1,62 @@
+{
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+    "info": {
+        "id": "1026651",
+        "name": "Chinese Wok",
+        "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2025/1/28/a44aaf25-3312-47f1-b028-6a28e9da5513_1026651.jpg",
+        "locality": "Parvat Patiya",
+        "areaName": "The Palace, Godadara Road",
+        "costForTwo": "₹250 for two",
+        "cuisines": [
+            "Chinese",
+            "Asian",
+            "Tibetan",
+            "Desserts"
+        ],
+        "avgRating": 4.2,
+        "veg": true,
+        "parentId": "61955",
+        "avgRatingString": "4.2",
+        "totalRatingsString": "618",
+        "sla": {
+            "deliveryTime": 31,
+            "lastMileTravel": 5.9,
+            "serviceability": "SERVICEABLE",
+            "slaString": "30-40 mins",
+            "lastMileTravelString": "5.9 km",
+            "iconType": "ICON_TYPE_EMPTY"
+        },
+        "availability": {
+            "nextCloseTime": "2025-10-25 23:00:00",
+            "opened": true
+        },
+        "isOpen": true,
+        "type": "F",
+        "aggregatedDiscountInfoV3": {
+            "header": "ITEMS",
+            "subHeader": "AT ₹119"
+        },
+        "differentiatedUi": {
+            "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            "differentiatedUiMediaDetails": {
+                "mediaType": "ADS_MEDIA_ENUM_IMAGE"
+            }
+        },
+        "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        "externalRatings": {
+            "aggregatedRating": {
+                "rating": "--"
+            }
+        },
+        "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+    },
+    "analytics": {
+        "context": "seo-data-43bca6b8-5039-46da-935e-cdde9f114a4e"
+    },
+    "cta": {
+        "link": "https://www.swiggy.com/city/surat/chinese-wok-parvat-patiya-the-palace-godadara-road-rest1026651",
+        "text": "RESTAURANT_MENU",
+        "type": "WEBLINK"
+    },
+    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+}
